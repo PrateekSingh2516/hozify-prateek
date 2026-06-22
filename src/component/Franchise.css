@@ -1,0 +1,962 @@
+/* ===========================
+   HERO SECTION
+=========================== */
+
+.franchise-hero {
+  background: #f7f7fc;
+  padding: 80px 7%;
+}
+
+.franchise-container {
+  max-width: 1400px;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+/* LEFT */
+
+.franchise-content {
+  flex: 1;
+  text-align: left;
+}
+
+.franchise-badge {
+  display: inline-block;
+
+  padding: 12px 22px;
+
+  background: #dfe6ff;
+  color: #1451d8;
+
+  border-radius: 999px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  margin-bottom: 30px;
+}
+
+.franchise-content h1 {
+  font-size: 78px;
+  line-height: 1.08;
+  font-weight: 800;
+
+  color: #111827;
+
+  margin-bottom: 30px;
+}
+
+.franchise-content h1 span {
+  display: block;
+  color: #1451d8;
+}
+
+.franchise-content p {
+  max-width: 650px;
+
+  font-size: 20px;
+  line-height: 1.8;
+
+  color: #555;
+
+  margin-bottom: 40px;
+}
+
+.franchise-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+/* BUTTONS */
+
+.primary-btn {
+  background: #1451d8;
+  color: white;
+
+  border: none;
+
+  padding: 18px 30px;
+  border-radius: 50px;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  cursor: pointer;
+}
+
+.secondary-btn {
+  background: transparent;
+
+  border: 2px solid #111827;
+  color: #111827;
+
+  padding: 18px 30px;
+
+  border-radius: 50px;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+/* RIGHT */
+
+.franchise-image {
+  flex: 1;
+  position: relative;
+}
+
+.franchise-image img {
+  width: 100%;
+  height: 700px;
+
+  object-fit: cover;
+
+  border-radius: 18px;
+}
+
+/* Floating Growth Card */
+
+.growth-card {
+  position: absolute;
+
+  left: -30px;
+  bottom: 50px;
+
+  background: white;
+
+  padding: 25px 30px;
+
+  border-radius: 16px;
+
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.growth-card h3 {
+  color: #1451d8;
+  font-size: 48px;
+  margin-bottom: 5px;
+}
+
+.growth-card p {
+  color: #555;
+  font-size: 16px;
+}
+
+/* ===========================
+   STATS BAR
+=========================== */
+
+.franchise-stats {
+  background: #08173f;
+
+  padding: 80px 7%;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  text-align: center;
+}
+
+.stat-item h2 {
+  color: white;
+  font-size: 72px;
+  margin-bottom: 15px;
+}
+
+.stat-item p {
+  color: #c7d2ff;
+
+  letter-spacing: 2px;
+  font-size: 18px;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 1200px) {
+
+  .franchise-content h1 {
+    font-size: 60px;
+  }
+
+  .franchise-image img {
+    height: 550px;
+  }
+}
+
+@media (max-width: 992px) {
+
+  .franchise-container {
+    flex-direction: column;
+  }
+
+  .franchise-content h1 {
+    font-size: 52px;
+  }
+
+  .franchise-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .growth-card {
+    left: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .franchise-content h1 {
+    font-size: 42px;
+  }
+
+  .franchise-buttons {
+    flex-direction: column;
+  }
+
+  .franchise-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-item h2 {
+    font-size: 48px;
+  }
+
+  .franchise-image img {
+    height: 400px;
+  }
+}
+
+/* ==========================
+   Hozify Edge Section
+========================== */
+
+.franchise-edge {
+  background: #f7f7fc;
+  padding: 100px 8%;
+}
+
+.edge-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.edge-header h2 {
+  font-size: 48px;
+  margin-bottom: 15px;
+  color: #111827;
+}
+
+.edge-header p {
+  max-width: 700px;
+  margin: auto;
+  color: #6b7280;
+  line-height: 1.7;
+  font-size: 18px;
+}
+
+/* ROWS */
+
+.edge-row {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+/* COMMON CARD */
+
+.edge-card {
+  border-radius: 24px;
+  padding: 40px;
+}
+
+.edge-card h3 {
+  font-size: 32px;
+  margin: 20px 0;
+  color: #111827;
+}
+
+.edge-card p {
+  color: #6b7280;
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+/* TOP LEFT */
+
+.service-os {
+  flex: 2;
+  background: white;
+}
+
+/* TOP RIGHT */
+
+.territory-card {
+  flex: 1;
+  background: #1451d8;
+}
+
+.territory-card h3,
+.territory-card p {
+  color: white;
+}
+
+/* BOTTOM LEFT */
+
+.training-card {
+  width: 32%;
+  background: white;
+  border: 1px solid #dfe3ef;
+}
+
+/* BOTTOM RIGHT */
+
+.marketing-card {
+  flex: 1;
+
+  background: #eef1fa;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 30px;
+}
+
+.marketing-content {
+  flex: 1;
+}
+
+.marketing-content h3 {
+  font-size: 32px;
+}
+
+.marketing-card img {
+  width: 140px;
+  height: 140px;
+
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+
+  .edge-row {
+    flex-direction: column;
+  }
+
+  .training-card {
+    width: 100%;
+  }
+
+  .marketing-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .marketing-card img {
+    width: 100%;
+    height: 220px;
+  }
+}
+
+/* ==================================
+   Territory Section
+================================== */
+
+
+.territory-section {
+  background: #f7f7fc;
+  padding: 90px 8%;
+}
+
+.territory-container {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 50px;
+}
+
+.territory-image {
+  flex: 1;
+  position: relative;
+}
+
+.territory-image img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.region-badge {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+
+  background: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+
+  font-weight: 600;
+  color: #222;
+}
+
+.territory-content {
+  flex: 1;
+}
+
+.territory-content h2 {
+  font-size: 48px;
+  margin-bottom: 25px;
+  color: #111827;
+}
+
+.territory-content p {
+  color: #5f6675;
+  line-height: 1.8;
+  font-size: 18px;
+  margin-bottom: 35px;
+}
+
+.territory-feature {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.feature-icon {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #edf3ff;
+  border-radius: 50%;
+
+  color: #1451d8;
+  font-size: 20px;
+
+  flex-shrink: 0;
+}
+
+.territory-feature h4 {
+  margin-bottom: 5px;
+}
+
+.territory-feature span {
+  color: #666;
+}
+
+.feature-text h4 {
+  margin: 0 0 6px 0;
+  font-size: 18px;
+  color: #111827;
+}
+
+.feature-text span {
+  display: block;
+  color: #666;
+  line-height: 1.6;
+}
+/* ==========================================
+            LARGE TABLETS
+========================================== */
+
+@media (max-width:1200px){
+
+  .territory-container{
+    gap:40px;
+  }
+
+  .territory-content h2{
+    font-size:42px;
+  }
+
+  .territory-content p{
+    font-size:17px;
+  }
+
+  .territory-image img{
+    height:360px;
+  }
+
+}
+
+
+/* ==========================================
+                TABLETS
+========================================== */
+
+@media (max-width:992px){
+
+  .territory-section{
+    padding:70px 5%;
+  }
+
+  .territory-container{
+    flex-direction:column;
+    gap:50px;
+  }
+
+  .territory-image{
+    width:100%;
+    max-width:700px;
+    margin:auto;
+  }
+
+  .territory-image img{
+    width:100%;
+    height:auto;
+    aspect-ratio:16/10;
+  }
+
+  .territory-content{
+    width:100%;
+    text-align:center;
+  }
+
+  .territory-content h2{
+    font-size:40px;
+  }
+
+  .territory-content p{
+    max-width:700px;
+    margin:0 auto 35px;
+  }
+
+  .territory-feature{
+    justify-content:center;
+    text-align:left;
+  }
+
+}
+
+
+/* ==========================================
+                MOBILE
+========================================== */
+
+@media (max-width:768px){
+
+  .territory-section{
+    padding:60px 20px;
+  }
+
+  .territory-container{
+    gap:40px;
+  }
+
+  .territory-content h2{
+    font-size:34px;
+    line-height:1.2;
+  }
+
+  .territory-content p{
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  .territory-image{
+    max-width:100%;
+  }
+
+  .territory-image img{
+    aspect-ratio:4/3;
+    border-radius:16px;
+  }
+
+  .region-badge{
+    top:15px;
+    left:15px;
+    padding:10px 16px;
+    font-size:14px;
+  }
+
+  .territory-feature{
+    align-items:flex-start;
+    gap:15px;
+  }
+
+  .feature-icon{
+    width:45px;
+    height:45px;
+    font-size:18px;
+  }
+
+  .feature-text h4{
+    font-size:17px;
+  }
+
+  .feature-text span{
+    font-size:14px;
+  }
+
+}
+
+
+/* ==========================================
+            SMALL PHONES
+========================================== */
+
+@media (max-width:480px){
+
+  .territory-section{
+    padding:50px 15px;
+  }
+
+  .territory-content h2{
+    font-size:28px;
+  }
+
+  .territory-content p{
+    font-size:15px;
+  }
+
+  .territory-image img{
+    aspect-ratio:1/1;
+    border-radius:14px;
+  }
+
+  .region-badge{
+    font-size:12px;
+    padding:8px 12px;
+  }
+
+  .territory-feature{
+    gap:12px;
+  }
+
+  .feature-icon{
+    width:40px;
+    height:40px;
+    font-size:16px;
+  }
+
+  .feature-text h4{
+    font-size:16px;
+  }
+
+  .feature-text span{
+    font-size:13px;
+  }
+
+}
+
+/* ==================================
+   Investment Section
+================================== */
+
+.investment-section {
+  background: #f7f7fc;
+  padding: 40px 8% 100px;
+}
+
+.investment-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.investment-header h2 {
+  font-size: 52px;
+  color: #111827;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.investment-header p {
+  color: #666;
+  font-size: 18px;
+}
+
+/* Cards */
+
+.pricing-cards {
+  display: flex;
+  gap: 25px;
+  text-align: left;
+}
+
+.pricing-card {
+  flex: 1;
+  background: white;
+
+  border: 1px solid #dfe3ef;
+  border-radius: 18px;
+
+  padding: 40px;
+  position: relative;
+}
+
+.tier-name {
+  letter-spacing: 2px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #555;
+}
+
+.blue {
+  color: #1451d8;
+}
+
+.pricing-card h3 {
+  font-size: 56px;
+  margin: 25px 0;
+  color: #111827;
+}
+
+.pricing-card h3 span {
+  font-size: 24px;
+  color: #888;
+  font-weight: 400;
+}
+
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 35px 0;
+}
+
+.pricing-card ul li {
+  margin-bottom: 18px;
+  color: #222;
+  font-size: 18px;
+}
+
+.outline-btn {
+  width: 100%;
+  padding: 16px;
+  margin-top: 20px;
+  border-radius: 50px;
+  border: 2px solid #111827;
+  color: #08173f;
+  background: transparent;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary-invest-btn {
+  width: 100%;
+  padding: 16px;
+
+  border: none;
+  border-radius: 50px;
+
+  background: #1451d8;
+  color: white;
+
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Featured Card */
+
+.featured {
+  border: 2px solid #1451d8;
+  transition: 0.3s;
+}
+
+.featured:hover{
+    transform: translateY(-10px);
+}
+
+
+.popular-badgee {
+  position: absolute;
+  top: -14px;
+  right: 25px;
+
+  background: #1451d8;
+  color: white;
+
+  padding: 8px 18px;
+  border-radius: 12px;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ==========================
+   CONTACT SECTION
+========================== */
+
+.franchise-section {
+  background-color: #0b111e; /* Dark navy background */
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+
+.franchisee-container {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  align-items: center;
+}
+.franchise-info {
+  flex: 1;
+  color: #ffffff;
+  text-align: left;
+}
+
+.franchise-info h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.franchise-subtitle {
+  color: #a0aec0; 
+  line-height: 1.6;
+  margin-bottom: 40px;
+  font-size: 1rem;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.icon-wrapper {
+  background-color: #1a2436;
+  width: 40px;
+  height: 30px;
+  border-radius: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #3182ce; 
+}
+
+.contact-item a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+
+.franchise-form-card {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.franchise-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #2d3748;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3182ce;
+}
+
+
+.submit-btn {
+  background-color: #0b3c95; 
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 25px; 
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #092c6e;
+}
+
+.form-disclaimer {
+  font-size: 0.75rem;
+  color: #718096;
+  text-align: center;
+  line-height: 1.4;
+  margin: 0;
+}
+
+
+@media (max-width: 768px) {
+  .franchisee-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+/* RESPONSIVE */
