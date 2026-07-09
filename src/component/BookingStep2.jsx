@@ -1,15 +1,17 @@
 import "./BookingStep2.css";
-import { Link,useLocation } from "react-router-dom";
-import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState,useEffect } from "react";
 import {
   FiCheck,
   FiShield,
   FiArrowLeft,
 } from "react-icons/fi";
+import axios from "axios";
 
 function BookingStep2(){
 
 const { state } = useLocation();
+const navigate = useNavigate();
 
 const bookingData = state || {
   service: "Premium Deep Cleaning",
@@ -35,6 +37,66 @@ const finalTotal = (
   const [otpTwo, setOtpTwo] = useState("");
   const [otpThree, setOtpThree] = useState("");
   const [otpFour, setOtpFour] = useState("");
+
+  const [customer, setCustomer] = useState({
+  name: "",
+  email: "",
+  phone: "",
+});
+
+const handleChange = (e) => {
+  setCustomer({
+    ...customer,
+    [e.target.name]: e.target.value,
+  });
+};
+
+const completeBooking = async () => {
+
+  if (
+    !customer.name ||
+    !customer.email ||
+    !customer.phone
+  ) {
+    alert("Please fill all contact details.");
+    return;
+  }
+
+  try {
+
+    const res = await axios.post(
+      "http://localhost:8000/api/bookings",
+      {
+        service: bookingData.service,
+        category: bookingData.category,
+        price: bookingData.price,
+        duration: bookingData.duration,
+        image: bookingData.image,
+
+        customer: {
+          name: customer.name,
+          email: customer.email,
+          phone: customer.phone,
+        },
+
+        bookingDate: bookingData.date,
+        bookingTime: bookingData.time,
+      }
+    );
+
+    navigate("/BookingSuccess", {
+      state: res.data.booking,
+    });
+
+  } catch (err) {
+
+    console.log(err);
+
+    alert("Booking failed.");
+
+  }
+
+};
 
     return(
             <>
@@ -121,9 +183,12 @@ const finalTotal = (
                 </label>
 
                 <input
-                  type="text"
-                  placeholder="John Doe"
-                />
+type="text"
+name="name"
+value={customer.name}
+onChange={handleChange}
+placeholder="John Doe"
+/>
 
               </div>
 
@@ -134,9 +199,12 @@ const finalTotal = (
                 </label>
 
                 <input
-                  type="email"
-                  placeholder="john@example.com"
-                />
+type="email"
+name="email"
+value={customer.email}
+onChange={handleChange}
+placeholder="john@example.com"
+/>
 
               </div>
 
@@ -157,9 +225,12 @@ const finalTotal = (
                 </div>
 
                 <input
-                  type="text"
-                  placeholder="(555) 000-0000"
-                />
+type="text"
+name="phone"
+value={customer.phone}
+onChange={handleChange}
+placeholder="(555) 000-0000"
+/>
 
               </div>
 
@@ -238,18 +309,12 @@ const finalTotal = (
                 </button>
               </Link>
 
-              <Link to="/BookingSuccess"
-              state={{
-...bookingData,
-equipment,
-tax,
-total: finalTotal
-}}
-              onClick={() => window.scrollTo(0,0)}>
-              <button className="completeBtnStep2">
-                Complete Booking
-              </button>
-              </Link>
+              <button
+  className="completeBtnStep2"
+  onClick={completeBooking}
+>
+  Complete Booking
+</button>
 
             </div>
 

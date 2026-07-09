@@ -1,9 +1,172 @@
 import "./Franchise.css"
 import { FaArrowRight,FaEnvelope, FaPhoneAlt } from "react-icons/fa";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 function Franchise(){
+
+  const [showPlanPopup, setShowPlanPopup] = useState(false);
+const [selectedPlan, setSelectedPlan] = useState(null);
+const [loading, setLoading] = useState(true);
+  const [franchise, setFranchise] = useState(null);
+
+const [formData, setFormData] = useState({
+  fullName: "",
+  email: "",
+  investmentCapital: "",
+  targetTerritory: "",
+  additionalContext: "",
+});
+
+const [message, setMessage] = useState("");
+const [showProspectus, setShowProspectus] = useState(false);
+
+
+
+useEffect(() => {
+
+  const fetchFranchise = async () => {
+
+    try {
+
+      const res = await axios.get(
+        "http://localhost:8000/api/franchise"
+      );
+
+      setFranchise(res.data.franchise);
+
+    } catch (err) {
+
+      console.log(err);
+
+    } finally {
+
+    setLoading(false);
+
+  }
+
+  };
+
+  fetchFranchise();
+
+}, []);
+
+if (loading) {
+  return (
+    <div className="page-loader">
+      <div className="loader-spinner"></div>
+      <h2>Loading Franchise...</h2>
+    </div>
+  );
+}
+const handleChange = (e) => {
+
+  setFormData({
+
+    ...formData,
+
+    [e.target.name]: e.target.value,
+
+  });
+
+};
+const handleSubmit = async (e) => {
+
+  e.preventDefault();
+
+  try {
+
+    await axios.post(
+      "http://localhost:8000/api/franchise/apply",
+      formData
+    );
+
+    setMessage(
+      "Application submitted successfully!"
+    );
+
+    setFormData({
+
+      fullName: "",
+      email: "",
+      investmentCapital: "",
+      targetTerritory: "",
+      additionalContext: "",
+
+    });
+
+  } catch (err) {
+
+    console.log(err);
+
+    setMessage(
+      "Something went wrong."
+    );
+
+  }
+
+};
+
+const investmentPlans = {
+  essential: {
+    title: "Essential Plan",
+    price: "$45k Startup",
+    description:
+      "Perfect for entrepreneurs looking to start with a single territory and minimal investment.",
+
+    features: [
+      "Single Territory",
+      "Basic Service OS",
+      "Remote Training",
+      "Marketing Starter Kit",
+      "30 Days Support"
+    ],
+
+    button: "Apply for Essential"
+  },
+
+  growth: {
+    title: "Growth Partner",
+    price: "$120k Startup",
+
+    description:
+      "Designed for ambitious entrepreneurs who want faster expansion and premium support.",
+
+    features: [
+      "Triple Territory Bundle",
+      "Premium Analytics",
+      "Priority Lead Generation",
+      "In-Person Launch Support",
+      "Dedicated Success Coach"
+    ],
+
+    button: "Apply for Growth"
+  },
+
+  enterprise: {
+    title: "Enterprise",
+    price: "$350k+",
+
+    description:
+      "Ideal for corporations and large investors seeking regional expansion and exclusive rights.",
+
+    features: [
+      "Regional Master License",
+      "White Label Platform",
+      "Dedicated Success Manager",
+      "Enterprise API",
+      "24×7 Premium Support"
+    ],
+
+    button: "Contact Sales"
+  }
+};
+const openPlanPopup = (plan) => {
+  setSelectedPlan(plan);
+  setShowPlanPopup(true);
+};
+
   return(
     <>
     <section className="franchise-hero">
@@ -30,14 +193,26 @@ function Franchise(){
 
             <div className="franchise-buttons">
 
-              <button className="primary-btn">
-                Request Prospectus
-                <FaArrowRight />
-              </button>
+              <button
+  className="primary-btn"
+  onClick={() => setShowProspectus(true)}
+>
+  Request Prospectus
+  <FaArrowRight />
+</button>
 
-              <button className="secondary-btn">
-                View Market Data
-              </button>
+              <button
+  className="secondary-btn"
+  onClick={() =>
+    document
+      .getElementById("investment-section")
+      ?.scrollIntoView({
+        behavior: "smooth",
+      })
+  }
+>
+  View Market Data
+</button>
 
             </div>
 
@@ -216,7 +391,10 @@ function Franchise(){
         Investment Tiers
 ================================== */}
 
-      <section className="investment-section">
+      <section
+  id="investment-section"
+  className="investment-section"
+>
             <div className="investment-header">
               <h2>Investment Tiers</h2>
               <p>
@@ -233,9 +411,12 @@ function Franchise(){
         <li>✓ Basic OS Suite</li>
         <li>✓ Remote Training</li>
       </ul>
-          <button className="outline-btn">
-        Learn More
-      </button>
+          <button
+  className="outline-btn"
+  onClick={() => openPlanPopup("essential")}
+>
+  Learn More
+</button>
                 </div>
 
                 <div className="pricing-card featured">
@@ -259,9 +440,12 @@ function Franchise(){
         <li>✓ Priority Lead Generation</li>
       </ul>
 
-      <button className="primary-invest-btn">
-        Select Growth
-      </button>
+      <button
+  className="primary-invest-btn"
+  onClick={() => openPlanPopup("growth")}
+>
+  Select Growth
+</button>
 
     </div>
           <div className="pricing-card">
@@ -280,9 +464,12 @@ function Franchise(){
         <li>✓ Dedicated Success Manager</li>
       </ul>
 
-      <button className="outline-btn">
-        Contact Sales
-      </button>
+      <button
+  className="outline-btn"
+  onClick={() => openPlanPopup("enterprise")}
+>
+  Contact Sales
+</button>
 
     </div>
             </div>
@@ -294,7 +481,10 @@ function Franchise(){
 {/* ==========================
     Contact / Application Section
 ========================== */}
-<section className="franchise-section">
+<section
+  id="franchise-section"
+  className="franchise-section"
+>
       <div className="franchisee-container">
         
         
@@ -327,23 +517,44 @@ function Franchise(){
 
     
         <div className="franchise-form-card">
-          <form className="franchise-form">
+          <form
+  className="franchise-form"
+  onSubmit={handleSubmit}
+>
             
             <div className="form-row">
               <div className="form-group">
                 <label>Full Name</label>
-                <input type="text" placeholder="John Doe" required />
+               <input
+  type="text"
+  name="fullName"
+  value={formData.fullName}
+  onChange={handleChange}
+  placeholder="John Doe"
+  required
+/>
               </div>
               
               <div className="form-group">
                 <label>Email Address</label>
-                <input type="email" placeholder="john@example.com" required />
+                <input
+  type="email"
+  name="email"
+  value={formData.email}
+  onChange={handleChange}
+  placeholder="john@example.com"
+  required
+/>
               </div>
             </div>
 
             <div className="form-group">
               <label>Investment Liquid Capital</label>
-              <select defaultValue="">
+              <select
+  name="investmentCapital"
+  value={formData.investmentCapital}
+  onChange={handleChange}
+>
                 <option value="" disabled hidden>$50k - $100k</option>
                 <option value="50-100">$50k - $100k</option>
                 <option value="100-250">$100k - $250k</option>
@@ -353,18 +564,42 @@ function Franchise(){
 
             <div className="form-group">
               <label>Target Territory (State/Province)</label>
-              <input type="text" placeholder="e.g. California" required />
+             <input
+  type="text"
+  name="targetTerritory"
+  value={formData.targetTerritory}
+  onChange={handleChange}
+  placeholder="e.g. California"
+  required
+/>
             </div>
 
             <div className="form-group">
               <label>Additional Context</label>
-              <textarea placeholder="Tell us about your background..." rows="3"></textarea>
+              <textarea
+  name="additionalContext"
+  value={formData.additionalContext}
+  onChange={handleChange}
+  placeholder="Tell us about your background..."
+  rows="3"
+/>
             </div>
 
             <button type="submit" className="submit-btn">
               Submit Application
             </button>
-
+            {message && (
+  <p
+    style={{
+      color: "green",
+      marginTop: "15px",
+      textAlign: "center",
+      fontWeight: "600",
+    }}
+  >
+    {message}
+  </p>
+)}
             <p className="form-disclaimer">
               By submitting, you agree to our Investor Privacy Policy and Confidentiality Terms.
             </p>
@@ -373,6 +608,181 @@ function Franchise(){
 
       </div>
     </section>
+
+
+{showProspectus && (
+  <div
+    className="xzq_overlay_92hf"
+    onClick={() => setShowProspectus(false)}
+  >
+    <div
+      className="mvp_dialog_71ka"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button
+        className="tcb_close_9pl"
+        onClick={() => setShowProspectus(false)}
+      >
+        ✕
+      </button>
+
+      <div className="hzk_badge_1jf">
+        Franchise Opportunity
+      </div>
+
+      <h2 className="kfd_title_82m">
+        Franchise Prospectus
+      </h2>
+
+      <p className="nvx_desc_45q">
+        Everything you need to know before becoming a
+        <strong> Hozify Franchise Partner.</strong>
+      </p>
+
+      <div className="brk_features_88a">
+
+        <div className="ftr_item_3ja">
+          <span>✔</span>
+          Investment Plans
+        </div>
+
+        <div className="ftr_item_3ja">
+          <span>✔</span>
+          ROI & Revenue Forecast
+        </div>
+
+        <div className="ftr_item_3ja">
+          <span>✔</span>
+          Exclusive Territories
+        </div>
+
+        <div className="ftr_item_3ja">
+          <span>✔</span>
+          Marketing Support
+        </div>
+
+        <div className="ftr_item_3ja">
+          <span>✔</span>
+          Training & Operations
+        </div>
+
+        <div className="ftr_item_3ja">
+          <span>✔</span>
+          Business Requirements
+        </div>
+
+      </div>
+
+      <div className="btn_group_x82">
+
+        <button
+          className="download_x82"
+          onClick={()=>{
+            alert("Prospectus Download Started")
+          }}
+        >
+          Download PDF
+        </button>
+
+        <button
+          className="apply_x82"
+          onClick={()=>{
+            setShowProspectus(false);
+
+            document
+              .getElementById("franchise-section")
+              ?.scrollIntoView({
+                behavior:"smooth"
+              });
+
+          }}
+        >
+          Apply Now
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+)}
+
+
+{/* =========================
+    Investment Plan Popup
+========================= */}
+
+{showPlanPopup && (
+  <div
+    className="plan_popup_overlay_x91"
+    onClick={() => setShowPlanPopup(false)}
+  >
+    <div
+      className="plan_popup_card_x91"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button
+        className="plan_close_btn_x91"
+        onClick={() => setShowPlanPopup(false)}
+      >
+        ✕
+      </button>
+
+      <span className="plan_badge_x91">
+        Investment Plan
+      </span>
+
+      <h2 className="plan_title_x91">
+        {investmentPlans[selectedPlan].title}
+      </h2>
+
+      <h3 className="plan_price_x91">
+        {investmentPlans[selectedPlan].price}
+      </h3>
+
+      <p className="plan_description_x91">
+        {investmentPlans[selectedPlan].description}
+      </p>
+
+      <div className="plan_feature_list_x91">
+        {investmentPlans[selectedPlan].features.map((item, index) => (
+          <div
+            key={index}
+            className="plan_feature_item_x91"
+          >
+            ✔ {item}
+          </div>
+        ))}
+      </div>
+
+      <div className="plan_popup_buttons_x91">
+
+        <button
+          className="plan_primary_btn_x91"
+          onClick={() => {
+            setShowPlanPopup(false);
+
+            document
+              .getElementById("franchise-section")
+              ?.scrollIntoView({
+                behavior: "smooth",
+              });
+          }}
+        >
+          {investmentPlans[selectedPlan].button}
+        </button>
+
+        <button
+          className="plan_secondary_btn_x91"
+          onClick={() => setShowPlanPopup(false)}
+        >
+          Close
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+)}
 
     </>
   );

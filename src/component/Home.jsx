@@ -20,23 +20,15 @@ import {
   FaBug,
   FaCut,
   FaArrowRight,
+  FaSpa,
+  FaTools,
 } from "react-icons/fa";
 import { MdContentCut } from "react-icons/md";
-const services = [
-  { icon: <FaBroom />, title: "Home Cleaning", rating: "4.8 ★ (12k+)" },
-  { icon: <FaBolt />, title: "Electrical", rating: "4.9 ★ (8k+)" },
-  { icon: <FaWrench />, title: "Plumbing", rating: "4.7 ★ (10k+)" },
-  { icon: <FaPaintRoller />, title: "Painting", rating: "5.0 ★ (5k+)" },
-  { icon: <FaSnowflake />, title: "AC Services", rating: "4.9 ★ (15k+)" },
-  { icon: <FaTv />, title: "Appliance", rating: "4.8 ★ (7k+)" },
 
-  { icon: <FaHammer />, title: "Carpentry", rating: "4.6 ★ (6k+)" },
-  { icon: <FaBug />, title: "Pest Control", rating: "4.9 ★ (4k+)" },
-  { icon: <FaCut />, title: "Beauty", rating: "4.8 ★ (22k+)" },
-  { icon: <MdContentCut />, title: "Salon", rating: "4.7 ★ (18k+)" },
-  { icon: <FaBriefcase />, title: "Business", rating: "5.0 ★ (3k+)" },
-  { icon: <FaBolt />, title: "Custom", rating: "4.8 ★ (1k+)" },
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+
 import { Link } from "react-router-dom";
 //economy
 import {
@@ -85,10 +77,92 @@ import { FaApple,
 
 function Home(){
 
+  const [services, setServices] = useState([]);
+  const [filteredServices, setFilteredServices] = useState([]);
+const [search, setSearch] = useState("");
+const [loading, setLoading] = useState(true);
+const [showIntro, setShowIntro] = useState(true);
 
+  useEffect(() => {
+  const fetchServices = async () => {
+    try {
+      const res = await axios.get(
+        "http://localhost:8000/api/home-services"
+      );
+
+      setServices(res.data.services);
+      setFilteredServices(res.data.services);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  fetchServices();
+  setTimeout(() => {
+  setShowIntro(false);
+}, 2000);
+}, []);
+
+const iconMap = {
+  FaBroom: <FaBroom />,
+  FaBolt: <FaBolt />,
+  FaWrench: <FaWrench />,
+  FaPaintRoller: <FaPaintRoller />,
+  FaSnowflake: <FaSnowflake />,
+  FaTv: <FaTv />,
+  FaHammer: <FaHammer />,
+  FaBug: <FaBug />,
+  FaCut: <FaCut />,
+  MdContentCut: <MdContentCut />,
+  FaBriefcase: <FaBriefcase />,
+  FaSpa: <FaSpa />,
+  FaTools: <FaTools />,
+};
+
+const handleSearch = () => {
+    const result = services.filter((service) =>
+        service.name.toLowerCase().includes(search.toLowerCase())
+    );
+
+    setFilteredServices(result);
+};
+
+if (showIntro) {
+
+  return (
+
+    <div className="home-intro-loader">
+
+      <div className="loader-content">
+
+        <div className="loader-logo">
+          H
+        </div>
+
+        <h1>HOZIFY</h1>
+
+        <div className="loader-line">
+
+          <div className="loader-progress"></div>
+
+        </div>
+
+        <p>
+          Optimistic Engineering for Modern Services
+        </p>
+
+      </div>
+
+    </div>
+
+  );
+
+}
     return(
 
-        <>
+       <div className="home-page-fade">
+
+        
     {/* Hero */}
         
         <section className="hero">
@@ -117,8 +191,12 @@ function Home(){
             <input
               type="text"
               placeholder="What service do you need?"
+               value={search}
+    onChange={(e) => setSearch(e.target.value)}
             />
-            <button>Search</button>
+            <button onClick={handleSearch}>
+    Search
+</button>
           </div>
         </div>
 
@@ -175,11 +253,17 @@ function Home(){
         </p>
 
         <div className="services-grid">
-          {services.map((service, index) => (
+          {filteredServices.map((service, index) => (
             <div className="service-card" key={index}> 
-              <div className="service-icon">{service.icon}</div>
-              <h3>{service.title}</h3>
-              <span>{service.rating}</span>
+              <div className="service-icon">
+  {iconMap[service.icon]}
+</div>
+
+<h3>{service.name}</h3>
+
+<span>
+  {service.rating} ★ ({service.reviews})
+</span>
             </div>
           ))}
         </div>
@@ -448,7 +532,7 @@ function Home(){
             
         </section>
 
-    </>
+    </div>
 
     );
 }

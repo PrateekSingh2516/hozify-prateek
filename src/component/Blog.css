@@ -761,3 +761,259 @@
 }
 
 }
+
+/* =====================================================
+                PREMIUM HOVER EFFECTS
+===================================================== */
+
+/* Featured Post */
+
+.featured-post{
+transition:.45s ease;
+cursor:pointer;
+}
+
+.featured-post img{
+transition:.6s ease;
+}
+
+.featured-post:hover{
+transform:translateY(-8px);
+box-shadow:0 25px 55px rgba(0,0,0,.18);
+}
+
+.featured-post:hover img{
+transform:scale(1.08);
+}
+
+
+/* Webinar Card */
+
+.webinar-card{
+transition:.35s ease;
+cursor:pointer;
+}
+
+.webinar-card:hover{
+transform:translateY(-8px);
+box-shadow:0 22px 45px rgba(20,81,216,.35);
+}
+
+.webinar-card button{
+transition:.3s;
+}
+
+.webinar-card:hover button{
+gap:18px;
+}
+
+
+/* Insight Card */
+
+.insight-card{
+transition:.35s ease;
+cursor:pointer;
+}
+
+.insight-card:hover{
+transform:translateY(-8px);
+background:#e4ebff;
+box-shadow:0 18px 40px rgba(20,81,216,.15);
+}
+
+
+/* Category Buttons */
+
+.category-tabs button{
+transition:.3s ease;
+}
+
+.category-tabs button:hover{
+background:#1451d8;
+color:white;
+transform:translateY(-3px);
+box-shadow:0 10px 22px rgba(20,81,216,.25);
+}
+
+.category-tabs .active:hover{
+background:#1451d8;
+}
+
+
+/* Search Box */
+
+.search-boxx input{
+transition:.3s ease;
+}
+
+.search-boxx input:focus{
+border-color:#1451d8;
+box-shadow:0 10px 25px rgba(20,81,216,.15);
+}
+
+
+/* Article Cards */
+
+.article-card{
+transition:.4s ease;
+cursor:pointer;
+}
+
+.article-card img{
+transition:.55s ease;
+}
+
+.article-card:hover{
+transform:translateY(-10px);
+box-shadow:0 22px 45px rgba(0,0,0,.12);
+}
+
+.article-card:hover img{
+transform:scale(1.08);
+}
+
+.article-card h3{
+transition:.3s;
+}
+
+.article-card:hover h3{
+color:#1451d8;
+}
+
+
+/* Author Avatar */
+
+.author-circle{
+overflow:hidden;
+}
+
+.author-circle img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.35s ease;
+}
+
+.article-card:hover .author-circle img{
+transform:scale(1.12);
+}
+
+
+/* Newsletter */
+
+.newsletter-card{
+transition:.4s ease;
+}
+
+.newsletter-card:hover{
+transform:translateY(-8px);
+box-shadow:0 25px 55px rgba(8,23,63,.45);
+}
+
+
+/* Newsletter Input */
+
+.newsletter-form input{
+transition:.3s ease;
+}
+
+.newsletter-form input:focus{
+border-color:#4b8cff;
+box-shadow:0 0 0 5px rgba(75,140,255,.18);
+}
+
+
+/* Newsletter Button */
+
+.newsletter-form button{
+transition:.35s ease;
+}
+
+.newsletter-form button:hover{
+background:white;
+color:#1451d8;
+transform:translateY(-3px);
+box-shadow:0 18px 35px rgba(255,255,255,.2);
+}
+
+
+/* Pagination */
+
+.pagination button{
+transition:.3s ease;
+}
+
+.pagination button:hover{
+background:#1451d8;
+color:white;
+border-color:#1451d8;
+transform:translateY(-3px);
+}
+
+
+/* Featured Badge */
+
+.featured-badge{
+transition:.35s ease;
+}
+
+.featured-post:hover .featured-badge{
+background:white;
+color:#1451d8;
+}
+
+
+/* Author Row */
+
+.author-row{
+transition:.3s ease;
+}
+
+.article-card:hover .author-row{
+border-color:#d9e6ff;
+}
+
+
+/* Featured Meta */
+
+.featured-meta span{
+transition:.3s ease;
+}
+
+.featured-post:hover .featured-meta span{
+transform:translateX(4px);
+}
+
+
+/* Webinar Button */
+
+.webinar-card button svg{
+transition:.3s ease;
+}
+
+.webinar-card:hover button svg{
+transform:translateX(6px);
+}
+
+
+/* Insight Card Title */
+
+.insight-card h3{
+transition:.3s ease;
+}
+
+.insight-card:hover h3{
+color:#1451d8;
+}
+
+
+/* Newsletter Icon */
+
+.newsletter-icon{
+transition:.5s ease;
+}
+
+.newsletter-card:hover .newsletter-icon{
+transform:translateY(-50%) scale(1.15) rotate(10deg);
+opacity:.18;
+}

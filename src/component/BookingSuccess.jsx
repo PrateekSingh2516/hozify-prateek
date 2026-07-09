@@ -6,7 +6,7 @@ import "./BookingSuccess.css";import {
   FaTools,
 } from "react-icons/fa";
 import { Link,useLocation } from 'react-router-dom';
-
+import { useEffect } from "react";
 
 function BookingSuccess(){
 
@@ -17,23 +17,30 @@ service:"Premium Deep Cleaning",
 date:"October 7, 2024",
 time:"08:00 AM",
 };
+
+useEffect(() => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
+}, []);
     return(
             <div className="laststep-container">
       {/* Success Icon */}
-      <div className="success-icon">
+      <div className="success-icon successPop glowCircle">
         <FaCheckCircle />
       </div>
 
       {/* Heading */}
-      <h1>Request Submitted!</h1>
+      <h1 className="fade1">Request Submitted!</h1>
 
-      <p className="subtitle">
+      <p className="subtitle fade2">
         Your premium service request has been successfully sent to
         our network of vetted engineers. We're on it.
       </p>
 
       {/* Booking Card */}
-      <div className="booking-card">
+      <div className="booking-card slideCard">
         <div className="booking-header">
           <div>
             <span className="booking-label">BOOKING ID</span>
@@ -67,11 +74,11 @@ time:"08:00 AM",
       </div>
 
       {/* Next Steps */}
-      <div className="next-section">
+      <div className="next-section fade3">
         <h2>What happens next?</h2>
 
         <div className="steps-grid">
-          <div className="step-card">
+          <div className="step-card cardDelay1">
             <span>01</span>
             <h3>Review</h3>
             <p>
@@ -80,7 +87,7 @@ time:"08:00 AM",
             </p>
           </div>
 
-          <div className="step-card">
+          <div className="step-card cardDelay2">
             <span>02</span>
             <h3>Confirmation</h3>
             <p>
@@ -89,7 +96,7 @@ time:"08:00 AM",
             </p>
           </div>
 
-          <div className="step-card">
+          <div className="step-card cardDelay3">
             <span>03</span>
             <h3>Service</h3>
             <p>
@@ -101,7 +108,7 @@ time:"08:00 AM",
       </div>
 
       {/* Buttons */}
-      <div className="action-buttons">
+      <div className="action-buttons fade4">
 
 
         <Link to="/"

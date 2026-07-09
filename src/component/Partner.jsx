@@ -1,8 +1,99 @@
 import "./Partner.css"
 import { FaArrowRight } from "react-icons/fa";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Partner(){
+  const [partner, setPartner] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [hours, setHours] = useState(25);
+const [level, setLevel] = useState("Pro");
+const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  domain: "Technical Maintenance",
+});
+
+const [message, setMessage] = useState("");
+let multiplier = 1;
+
+if (level === "Expert") {
+  multiplier = 1.25;
+} else if (level === "Master") {
+  multiplier = 1.5;
+}
+
+
+
+useEffect(() => {
+  const fetchPartner = async () => {
+    try {
+      const res = await axios.get("http://localhost:8000/api/partner");
+      setPartner(res.data.partner);
+    } catch (err) {
+      console.log(err);
+    }finally {
+    setLoading(false);
+  }
+  };
+
+  fetchPartner();
+}, []);
+
+if (loading) {
+  return (
+    <div className="page-loader">
+      <div className="loader-spinner"></div>
+      <h2>Loading Partner...</h2>
+    </div>
+  );
+}
+
+const payout = Math.round(
+  partner.calculator.baseIncome *
+  (hours / partner.calculator.defaultHours) *
+  multiplier
+);
+const handleChange = (e) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  });
+};
+const handleSubmit = async () => {
+
+  if (
+    !formData.name ||
+    !formData.email ||
+    !formData.domain
+  ) {
+    setMessage("Please fill all fields.");
+    return;
+  }
+
+  try {
+
+    await axios.post(
+      "http://localhost:8000/api/partner/register",
+      formData
+    );
+
+    setMessage("Registration submitted successfully!");
+
+    setFormData({
+      name: "",
+      email: "",
+      domain: "Technical Maintenance",
+    });
+
+  } catch (err) {
+
+    setMessage("Something went wrong.");
+
+    console.log(err);
+
+  }
+};
   return(
       <>
         <section className="partner-section">
@@ -11,27 +102,37 @@ function Partner(){
             <div className="first-left">
               <span className="partner-badge">
             <span className="green-dot"></span>
-            ECOSYSTEM GROWTH
+            {partner.hero.badge}
           </span>
 
-           <h1>
-            Scale Your Impact <br />
-            with Optimistic <br />
-            Engineering.
-          </h1>
+          <h1>{partner.hero.title}</h1>
 
-          <p>
-            Join the Hozify partner network. Whether you're an individual
-            pro, a service agency, or a vendor, our infrastructure is built
-            to amplify your professional growth.
-          </p>
+          <p>{partner.hero.subtitle}</p>
 
           <div className="first-left-buttons">
-            <button className="apply-btn">
+           <button
+  className="apply-btn"
+  onClick={() => {
+    document
+      .querySelector(".registration-section")
+      .scrollIntoView({
+        behavior: "smooth",
+      });
+  }}
+>
               Apply Now <FaArrowRight />
             </button>
 
-            <button className="perks-btn">
+            <button
+  className="perks-btn"
+  onClick={() => {
+    document
+      .querySelector(".edge-section")
+      .scrollIntoView({
+        behavior: "smooth",
+      });
+  }}
+>
               View Pro Perks
             </button> 
           </div>
@@ -39,12 +140,12 @@ function Partner(){
 
        <div className="first-left-image">
           <img
-            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900"
-            alt="Partner"
-          />
+  src={partner.hero.image}
+  alt="Partner"
+/>
 
           <div className="stats-card">
-            <h2>1.2M+</h2>
+            <h2>{partner.hero.activeRequests}</h2>
             <p>Active Service Requests</p>
           </div>
         </div>
@@ -64,66 +165,45 @@ function Partner(){
               </div>
 
               <div className="partner-cards">
-                      <div className="partner-card">
-                        <div className="card-icon">👨‍🔧</div>
 
-                        <h3>
-                            Independent Provider <br />
-                            (ISP)
-                        </h3>
+  {partner.roles.map((role, index) => (
 
-                        <p>
-        For individual technicians and specialized experts looking for
-        steady high-intent leads.
-                    </p>
+    <div
+      key={index}
+      className={`partner-card ${
+        role.featured ? "featured-card" : ""
+      }`}
+    >
 
-                    <ul>
-        <li>✓ Instant Booking System</li>
-        <li>✓ Direct Payouts</li>
-      </ul>
-             <a href="/">Explore ISP →</a>
+      <div className="card-icon">
+        {role.icon}
+      </div>
 
-                      </div>
+      <h3>{role.title}</h3>
 
-              <div className="partner-card featured-card">
-      <div className="card-icon">🏢</div>
-
-      <h3>Business Provider (BSP)</h3>
-
-      <p>
-        Scale your existing agency or business using our enterprise-grade
-        management tools.
-      </p>
+      <p>{role.description}</p>
 
       <ul>
-        <li>✓ Multi-Technician Dashboard</li>
-        <li>✓ Fleet Tracking APIs</li>
+
+        {role.features.map((feature, i) => (
+
+          <li key={i}>
+            ✓ {feature}
+          </li>
+
+        ))}
+
       </ul>
 
-      <a href="/">Expand Business →</a>
+      <a href="/">
+        {role.button} →
+      </a>
+
     </div>
 
+  ))}
 
-              <div className="partner-card">
-      <div className="card-icon">🛒</div>
-
-      <h3>Product Sellers</h3>
-
-      <p>
-        Market your service-related products directly to our ecosystem's
-        service providers.
-      </p>
-
-      <ul>
-        <li>✓ Marketplace Integration</li>
-        <li>✓ Bulk Order Logistics</li>
-      </ul>
-
-      <a href="/">List Products →</a>
-    </div>
-
-              
-              </div>
+</div>
         </section>
 
 
@@ -142,23 +222,43 @@ function Partner(){
 
             <div className="hours-row">
       <span>Weekly Service Hours</span>
-      <span className="hours-value">25 hrs</span>
+      <span className="hours-value">
+  {hours} hrs
+</span>
     </div>
 
       <input
-      type="range"
-      min="0"
-      max="50"
-      defaultValue="25"
-      className="hours-slider"
-    />
+  type="range"
+  min="0"
+  max="50"
+  value={hours}
+  onChange={(e) => setHours(Number(e.target.value))}
+  className="hours-slider"
+/>
 
           <div className="experience">
             <h4>Experience Level</h4>
             <div className="experience-buttons">
-              <button>Pro</button>
-              <button>Expert</button>
-              <button>Master</button>
+              <button
+  className={level === "Pro" ? "active-level" : ""}
+  onClick={() => setLevel("Pro")}
+>
+  Pro
+</button>
+
+<button
+  className={level === "Expert" ? "active-level" : ""}
+  onClick={() => setLevel("Expert")}
+>
+  Expert
+</button>
+
+<button
+  className={level === "Master" ? "active-level" : ""}
+  onClick={() => setLevel("Master")}
+>
+  Master
+</button>
             </div>
           </div>
         </div>
@@ -169,7 +269,9 @@ function Partner(){
       ESTIMATED MONTHLY PAYOUT
     </p>
 
-    <h1>$3,225.00</h1>
+<h1>
+${payout.toLocaleString()}
+</h1>
 
     <span className="earning-subtitle">
       Based on average partner data in Tier-1 cities.
@@ -200,44 +302,25 @@ function Partner(){
 
   <div className="edge-grid">
 
-    <div className="edge-card">
-      <div className="edge-icon">🕒</div>
-      <h3>Zero Downtime</h3>
-      <p>
-        Our algorithm ensures your calendar is always packed with
-        high-value jobs nearby.
-      </p>
-    </div>
+    {partner.benefits.map((item, index) => (
 
-    <div className="edge-card">
-      <div className="edge-icon">💳</div>
-      <h3>Weekly Payouts</h3>
-      <p>
-        No more waiting for monthly cycles. Get your earnings deposited
-        every Tuesday.
-      </p>
-    </div>
+      <div className="edge-card" key={index}>
 
-    <div className="edge-card">
-      <div className="edge-icon">🛡️</div>
-      <h3>Partner Protection</h3>
-      <p>
-        Comprehensive insurance coverage for all Hozify-booked jobs for
-        total peace of mind.
-      </p>
-    </div>
+        <div className="edge-icon">
+          {item.icon}
+        </div>
 
-    <div className="edge-card">
-      <div className="edge-icon">🚀</div>
-      <h3>Career Pathway</h3>
-      <p>
-        Go from an ISP to a Franchise owner with our internal promotion
-        and credit program.
-      </p>
-    </div>
+        <h3>{item.title}</h3>
+
+        <p>{item.description}</p>
+
+      </div>
+
+    ))}
 
   </div>
-      </section>
+
+</section>
 
 {/* =========================
     Registration Section
@@ -258,19 +341,35 @@ function Partner(){
     <div className="form-row">
       <div className="input-group">
         <label>Full Name</label>
-        <input type="text" placeholder="Alex Rivera" />
+        <input
+  type="text"
+  name="name"
+  placeholder="Alex Rivera"
+  value={formData.name}
+  onChange={handleChange}
+/>
       </div>
 
       <div className="input-group">
         <label>Contact Email</label>
-        <input type="email" placeholder="alex@servicepro.com" />
+        <input
+  type="email"
+  name="email"
+  placeholder="alex@servicepro.com"
+  value={formData.email}
+  onChange={handleChange}
+/>
       </div>
     </div>
 
     <div className="input-group">
       <label>Primary Service Domain</label>
 
-      <select>
+      <select
+  name="domain"
+  value={formData.domain}
+  onChange={handleChange}
+>
         <option>Technical Maintenance</option>
         <option>Cleaning Services</option>
         <option>Electrical Services</option>
@@ -278,9 +377,24 @@ function Partner(){
       </select>
     </div>
 
-    <button className="continue-btn">
-      Continue →
-    </button>
+   <button
+  className="continue-btn"
+  onClick={handleSubmit}
+>
+  Continue →
+</button>
+{message && (
+  <p
+    style={{
+      color: "#4ade80",
+      marginTop: "20px",
+      textAlign: "center",
+      fontWeight: "600",
+    }}
+  >
+    {message}
+  </p>
+)}
 
   </div>
 </section>
@@ -295,72 +409,36 @@ function Partner(){
 
   <div className="stories-grid">
 
-    <div className="story-card">
-      <div className="stars">★★★★★</div>
+    {partner.testimonials.map((story, index) => (
 
-      <p>
-        "Hozify didn't just give me jobs; they gave me a career
-        infrastructure. In 6 months, I went from a solo handyman
-        to managing a team of four."
-      </p>
+      <div className="story-card" key={index}>
 
-      <div className="story-user">
-        <img
-          src="https://randomuser.me/api/portraits/men/32.jpg"
-          alt=""
-        />
-
-        <div>
-          <h4>Marcus Thorne</h4>
-          <span>BSP Partner, Thorne & Co.</span>
+        <div className="stars">
+          {"★".repeat(story.rating)}
         </div>
-      </div>
-    </div>
 
-    <div className="story-card">
-      <div className="stars">★★★★★</div>
+        <p>"{story.review}"</p>
 
-      <p>
-        "As a seller, the logistics overhead used to kill my
-        margins. Hozify's internal supply chain network turned
-        that around instantly."
-      </p>
+        <div className="story-user">
 
-      <div className="story-user">
-        <img
-          src="https://randomuser.me/api/portraits/women/44.jpg"
-          alt=""
-        />
+          <img
+            src={story.image}
+            alt={story.name}
+          />
 
-        <div>
-          <h4>Elena Chen</h4>
-          <span>Logistics Vendor Partner</span>
+          <div>
+            <h4>{story.name}</h4>
+            <span>{story.role}</span>
+          </div>
+
         </div>
+
       </div>
-    </div>
 
-    <div className="story-card">
-      <div className="stars">★★★★★</div>
-
-      <p>
-        "The tech stack provided is better than most enterprise
-        tools I've paid for in the past. It's a game changer."
-      </p>
-
-      <div className="story-user">
-        <img
-          src="https://randomuser.me/api/portraits/men/65.jpg"
-          alt=""
-        />
-
-        <div>
-          <h4>David Okafor</h4>
-          <span>Independent Pro Partner</span>
-        </div>
-      </div>
-    </div>
+    ))}
 
   </div>
+
 </section>
 
         

@@ -1,7 +1,38 @@
 import "./Services.css"
 import { TiTickOutline } from "react-icons/ti";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 
 function Service(){
+
+const [plans, setPlans] = useState([]);
+useEffect(() => {
+
+    const fetchPlans = async () => {
+
+        try{
+
+            const res = await axios.get(
+                "http://localhost:8000/api/service-plans"
+            );
+
+            setPlans(res.data.plans);
+
+        }catch(error){
+
+            console.log(error);
+
+        }
+
+    };
+
+    fetchPlans();
+
+},[]);
+
+
     return(
         <>
 
@@ -138,71 +169,73 @@ function Service(){
 
   <div className="pricing-cards">
 
-    {/* Card 1 */}
-    <div className="plan-card">
+    {plans.map((plan) => (
 
-      <p className="plan-name">Essentiafl Clean</p>
+        <div
+            key={plan._id}
+            className={`plan-card ${
+                plan.theme === "dark"
+                    ? "elite-card"
+                    : plan.popular
+                    ? "featured-card"
+                    : ""
+            }`}
+        >
 
-      <div className="price">
-        $129 <span>/session</span>
-      </div>
+            {plan.popular && (
+                <div className="popular-badge">
+                    MOST POPULAR
+                </div>
+            )}
 
-      <ul>
-        <li>✓ 2 Bedrooms + Kitchen</li>
-        <li>✓ Floor Scrubbing</li>
-        <li>✓ Window Cleaning</li>
-        <li className="disabled">✕ Chimney Deep-Clean</li>
-      </ul>
+            <p className="plan-name">
+                {plan.planName}
+            </p>
 
-      <button className="basic-btn">Select Basic</button>
+            <div className="price">
+                ${plan.price}
+                <span>{plan.duration}</span>
+            </div>
 
-    </div>
+            <ul>
 
-    {/* Card 2 */}
-    <div className="plan-card featured-card">
+                {plan.features.map((feature, index) => (
 
-      <div className="popular-badge">
-        MOST POPULAR
-      </div>
+                    <li key={index}>
+                        ✓ {feature}
+                    </li>
 
-      <p className="plan-name">Premium Deep Clean</p>
+                ))}
 
-      <div className="price">
-        $199 <span>/session</span>
-      </div>
+            </ul>
 
-      <ul>
-        <li>✓ 4 Bedrooms + All Areas</li>
-        <li>✓ Chimney & Oven Clean</li>
-        <li>✓ Sofa & Carpet Spa</li>
-        <li>✓ Sanitization Certificate</li>
-      </ul>
+            <Link
+  to="/BookingStep1"
+  onClick={()=> window.scrollTo(0, 0)}
+  state={{
+    service: plan.planName,
+    price: plan.price,
+    duration: plan.duration,
+  }}
+>
+  <button
+    className={
+      plan.theme === "dark"
+        ? "elite-btn"
+        : plan.popular
+        ? "pro-btn"
+        : "basic-btn"
+    }
+  >
+    {plan.buttonText}
+  </button>
+</Link>
 
-      <button className="pro-btn">Book Pro Now</button>
+        </div>
 
-    </div>
+    ))}
 
-    {/* Card 3 */}
-    <div className="plan-card elite-card">
-
-      <p className="plan-name">The Mansion Elite</p>
-
-      <div className="price">
-        $349 <span>/session</span>
-      </div>
-
-      <ul>
-        <li>✪ Unlimited Rooms</li>
-        <li>✪ Steam Disinfection</li>
-        <li>✪ 4-Professional Crew</li>
-        <li>✪ Recurring Discount</li>
-      </ul>
-
-      <button className="elite-btn">Contact Sales</button>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 

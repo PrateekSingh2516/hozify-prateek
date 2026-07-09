@@ -1,8 +1,36 @@
 import "./footer.css"
 import { FaInstagram,FaSquareXTwitter,FaLinkedin } from "react-icons/fa6";
-
+import axios from "axios";
+import { useState } from "react";
 
 function Footer(){
+    const [footerEmail, setFooterEmail] = useState("");
+
+    const subscribeFooter = async () => {
+  if (!footerEmail.trim()) {
+    alert("Please enter your email.");
+    return;
+  }
+
+  try {
+    const res = await axios.post(
+      "http://localhost:8000/api/blog/subscribe",
+      {
+        email: footerEmail,
+      }
+    );
+
+    alert(res.data.message);
+
+    setFooterEmail("");
+
+  } catch (err) {
+    alert(
+      err.response?.data?.message ||
+      "Subscription Failed"
+    );
+  }
+};
     return(
         <footer className="footer">
 
@@ -67,11 +95,13 @@ function Footer(){
 
 
           <div className="input-foot">
-          <input
-           type="email" 
-           placeholder="your email"
-          />
-          <button className="subscribe-btn">
+         <input
+type="email"
+placeholder="your email"
+value={footerEmail}
+onChange={(e) => setFooterEmail(e.target.value)}
+/>
+          <button className="subscribe-btn" onClick={subscribeFooter}>
             Subscribe
           </button>
           </div>

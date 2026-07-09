@@ -52,7 +52,7 @@ body{
 }
 
 .search-item{
-
+  
     flex:1;
 
     display:flex;
@@ -62,6 +62,10 @@ body{
     gap:14px;
 
     padding:0 22px;
+}
+
+.nvjfbvjvndsjvd{
+  color: #121826;
 }
 
 .search-item svg{
@@ -598,6 +602,15 @@ body{
     color:#1452d9;
 }
 
+.trending p{
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.trending p:hover{
+    color:#2456e8;
+    transform:translateY(-2px);
+}
 /* Cards */
 
 .prime-card-row{
@@ -683,4 +696,8 @@ font-size:42px;
 
 }
 
+}
+
+.fjbvfjvfn{
+  color: #111827;
 }

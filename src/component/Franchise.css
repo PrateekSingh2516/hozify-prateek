@@ -17,6 +17,34 @@
   gap: 80px;
 }
 
+
+.primary-btn,
+.secondary-btn{
+    transition: all .35s ease;
+}
+.primary-btn:hover{
+
+    background:#0f43b5;
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 35px rgba(20,81,216,.35);
+
+    gap:18px;
+}
+
+.secondary-btn:hover{
+
+    background:black;
+
+    color:#fff;
+
+    border-color: grey;
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 35px rgba(20,81,216,.25);
+}
 /* LEFT */
 
 .franchise-content {
@@ -960,3 +988,740 @@
   }
 }
 /* RESPONSIVE */
+
+/* ================================
+   PREMIUM PROSPECTUS POPUP
+================================ */
+
+.xzq_overlay_92hf{
+
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(8,12,30,.68);
+
+    backdrop-filter:blur(10px);
+
+    z-index:99999;
+
+    animation:overlayFade .35s ease;
+}
+
+.mvp_dialog_71ka{
+
+    width:min(560px,92vw);
+
+    background:#fff;
+
+    border-radius:28px;
+
+    padding:45px;
+
+    position:relative;
+
+    box-shadow:
+    0 25px 80px rgba(0,0,0,.18);
+
+    animation:popupScale .35s ease;
+}
+
+.hzk_badge_1jf{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    background:#edf4ff;
+
+    color:#1451d8;
+
+    border-radius:40px;
+
+    font-size:.82rem;
+
+    font-weight:600;
+
+    margin-bottom:20px;
+
+    letter-spacing:.5px;
+}
+
+.kfd_title_82m{
+
+    font-size:2rem;
+
+    color:#111827;
+
+    margin-bottom:12px;
+
+    font-weight:700;
+}
+
+.nvx_desc_45q{
+
+    color:#64748b;
+
+    font-size:1rem;
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+}
+
+.brk_features_88a{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+
+    margin-bottom:40px;
+}
+
+.ftr_item_3ja{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    background:#f8faff;
+
+    border:1px solid #edf2ff;
+
+    border-radius:14px;
+
+    padding:15px 18px;
+
+    font-weight:500;
+
+    color:#374151;
+
+    transition:.3s;
+}
+
+.ftr_item_3ja span{
+
+    width:28px;
+    height:28px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#1451d8;
+
+    color:#fff;
+
+    font-size:.8rem;
+}
+
+.ftr_item_3ja:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 30px rgba(20,81,216,.12);
+}
+
+.btn_group_x82{
+
+    display:flex;
+
+    gap:18px;
+}
+
+.download_x82,
+.apply_x82{
+
+    flex:1;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    transition:.35s;
+}
+
+.download_x82{
+
+    background:#1451d8;
+
+    color:white;
+}
+
+.download_x82:hover{
+
+    background:#0d43ba;
+
+    transform:translateY(-3px);
+
+    box-shadow:0 14px 35px rgba(20,81,216,.35);
+}
+
+.apply_x82{
+
+    background:#edf4ff;
+
+    color:#1451d8;
+}
+
+.apply_x82:hover{
+
+    background:#1451d8;
+
+    color:white;
+
+    transform:translateY(-3px);
+
+    box-shadow:0 14px 35px rgba(20,81,216,.28);
+}
+
+.tcb_close_9pl{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#f3f4f6;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:.3s;
+}
+
+.tcb_close_9pl:hover{
+
+    background:#1451d8;
+
+    color:white;
+
+    transform:rotate(90deg);
+}
+
+@keyframes popupScale{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px) scale(.9);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+    }
+
+}
+
+@keyframes overlayFade{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+/* ================================
+   TABLETS
+================================ */
+
+@media (max-width:768px){
+
+  .xzq_overlay_92hf{
+    padding:18px;
+  }
+
+  .mvp_dialog_71ka{
+    width:100%;
+    max-width:500px;
+    max-height:90vh;
+    overflow-y:auto;
+    padding:34px 26px;
+    border-radius:22px;
+  }
+
+  .mvp_dialog_71ka::-webkit-scrollbar{
+    width:0;
+  }
+
+  .kfd_title_82m{
+    font-size:1.7rem;
+  }
+
+  .nvx_desc_45q{
+    font-size:.96rem;
+    margin-bottom:28px;
+  }
+
+  .brk_features_88a{
+    grid-template-columns:1fr;
+    gap:14px;
+    margin-bottom:28px;
+  }
+
+  .btn_group_x82{
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .download_x82,
+  .apply_x82{
+    width:100%;
+  }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width:480px){
+
+  .xzq_overlay_92hf{
+    align-items:flex-start;
+    overflow-y:auto;
+    padding:14px;
+  }
+
+  .mvp_dialog_71ka{
+    width:100%;
+    margin:20px 0;
+    max-height:none;
+    padding:24px 18px;
+    border-radius:18px;
+  }
+
+  .hzk_badge_1jf{
+    padding:6px 14px;
+    font-size:.72rem;
+    margin-bottom:14px;
+  }
+
+  .kfd_title_82m{
+    font-size:1.4rem;
+    line-height:1.3;
+    margin-bottom:10px;
+  }
+
+  .nvx_desc_45q{
+    font-size:.9rem;
+    line-height:1.6;
+    margin-bottom:22px;
+  }
+
+  .brk_features_88a{
+    gap:12px;
+    margin-bottom:22px;
+  }
+
+  .ftr_item_3ja{
+    padding:12px;
+    gap:10px;
+  }
+
+  .ftr_item_3ja span{
+    width:26px;
+    height:26px;
+    font-size:.72rem;
+    flex-shrink:0;
+  }
+
+  .ftr_item_3ja{
+    font-size:.92rem;
+  }
+
+  .download_x82,
+  .apply_x82{
+    height:50px;
+    font-size:.95rem;
+  }
+
+  .tcb_close_9pl{
+    width:34px;
+    height:34px;
+    top:12px;
+    right:12px;
+    font-size:16px;
+  }
+}
+
+/* ================================
+   SMALL PHONES
+================================ */
+
+@media (max-width:360px){
+
+  .xzq_overlay_92hf{
+    padding:10px;
+  }
+
+  .mvp_dialog_71ka{
+    padding:20px 15px;
+    border-radius:16px;
+  }
+
+  .kfd_title_82m{
+    font-size:1.2rem;
+  }
+
+  .nvx_desc_45q{
+    font-size:.85rem;
+  }
+
+  .ftr_item_3ja{
+    padding:10px;
+    font-size:.85rem;
+  }
+
+  .ftr_item_3ja span{
+    width:24px;
+    height:24px;
+    font-size:.68rem;
+  }
+
+  .download_x82,
+  .apply_x82{
+    height:46px;
+    font-size:.88rem;
+  }
+}
+/* ================================
+   MOBILE
+================================ */
+
+@media(max-width:650px){
+
+.mvp_dialog_71ka{
+
+padding:30px 22px;
+
+border-radius:22px;
+
+}
+
+.kfd_title_82m{
+
+font-size:1.6rem;
+
+}
+
+.brk_features_88a{
+
+grid-template-columns:1fr;
+
+}
+
+.btn_group_x82{
+
+flex-direction:column;
+
+}
+
+.download_x82,
+.apply_x82{
+
+width:100%;
+
+}
+
+}
+
+/* ======================================
+   INVESTMENT PLAN POPUP
+====================================== */
+
+.plan_popup_overlay_x91{
+position:fixed;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:25px;
+background:rgba(10,15,35,.65);
+backdrop-filter:blur(10px);
+z-index:9999;
+animation:planFade .35s ease;
+}
+
+.plan_popup_card_x91{
+position:relative;
+width:min(620px,100%);
+background:#fff;
+border-radius:26px;
+padding:45px;
+box-shadow:0 25px 80px rgba(0,0,0,.18);
+animation:planScale .35s ease;
+overflow:hidden;
+}
+
+.plan_popup_card_x91::before{
+content:"";
+position:absolute;
+left:0;
+top:0;
+width:100%;
+height:6px;
+background:linear-gradient(90deg,#2563eb,#3b82f6,#60a5fa);
+}
+
+.plan_close_btn_x91{
+position:absolute;
+right:22px;
+top:22px;
+width:42px;
+height:42px;
+border:none;
+border-radius:50%;
+background:#f3f4f6;
+cursor:pointer;
+font-size:18px;
+font-weight:700;
+transition:.3s;
+}
+
+.plan_close_btn_x91:hover{
+background:#2563eb;
+color:#fff;
+transform:rotate(90deg);
+}
+
+.plan_badge_x91{
+display:inline-block;
+padding:8px 18px;
+border-radius:40px;
+background:#eef4ff;
+color:#2563eb;
+font-size:.82rem;
+font-weight:600;
+letter-spacing:.5px;
+margin-bottom:18px;
+}
+
+.plan_title_x91{
+font-size:2rem;
+font-weight:700;
+color:#111827;
+margin-bottom:8px;
+}
+
+.plan_price_x91{
+font-size:2.5rem;
+font-weight:800;
+color:#2563eb;
+margin-bottom:18px;
+}
+
+.plan_description_x91{
+font-size:1rem;
+line-height:1.8;
+color:#64748b;
+margin-bottom:30px;
+}
+
+.plan_feature_list_x91{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:16px;
+margin-bottom:35px;
+}
+
+.plan_feature_item_x91{
+display:flex;
+align-items:center;
+padding:14px 18px;
+background:#f8fbff;
+border:1px solid #edf2ff;
+border-radius:14px;
+font-weight:500;
+color:#374151;
+transition:.3s;
+}
+
+.plan_feature_item_x91:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(37,99,235,.15);
+border-color:#c7ddff;
+}
+
+.plan_popup_buttons_x91{
+display:flex;
+gap:18px;
+}
+
+.plan_primary_btn_x91,
+.plan_secondary_btn_x91{
+flex:1;
+height:56px;
+border:none;
+border-radius:50px;
+font-size:1rem;
+font-weight:600;
+cursor:pointer;
+transition:.35s;
+}
+
+.plan_primary_btn_x91{
+background:#2563eb;
+color:#fff;
+}
+
+.plan_primary_btn_x91:hover{
+background:#1d4ed8;
+transform:translateY(-3px);
+box-shadow:0 15px 35px rgba(37,99,235,.35);
+}
+
+.plan_secondary_btn_x91{
+background:#f3f4f6;
+color:#111827;
+}
+
+.plan_secondary_btn_x91:hover{
+background:#111827;
+color:#fff;
+transform:translateY(-3px);
+}
+
+@keyframes planFade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+@keyframes planScale{
+from{
+opacity:0;
+transform:translateY(35px) scale(.9);
+}
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+}
+
+/* ===========================
+   TABLET
+=========================== */
+
+@media (max-width:768px){
+
+.plan_popup_card_x91{
+padding:35px 28px;
+}
+
+.plan_title_x91{
+font-size:1.7rem;
+}
+
+.plan_price_x91{
+font-size:2rem;
+}
+
+.plan_feature_list_x91{
+grid-template-columns:1fr;
+}
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width:576px){
+
+.plan_popup_overlay_x91{
+padding:15px;
+align-items:flex-end;
+}
+
+.plan_popup_card_x91{
+width:100%;
+padding:28px 20px;
+border-radius:24px 24px 0 0;
+max-height:90vh;
+overflow-y:auto;
+}
+
+.plan_close_btn_x91{
+right:16px;
+top:16px;
+width:38px;
+height:38px;
+}
+
+.plan_badge_x91{
+font-size:.72rem;
+padding:7px 14px;
+}
+
+.plan_title_x91{
+font-size:1.45rem;
+line-height:1.3;
+}
+
+.plan_price_x91{
+font-size:1.9rem;
+}
+
+.plan_description_x91{
+font-size:.92rem;
+line-height:1.7;
+margin-bottom:22px;
+}
+
+.plan_feature_item_x91{
+padding:12px 14px;
+font-size:.9rem;
+}
+
+.plan_popup_buttons_x91{
+flex-direction:column;
+gap:12px;
+}
+
+.plan_primary_btn_x91,
+.plan_secondary_btn_x91{
+width:100%;
+height:52px;
+font-size:.95rem;
+}
+
+}

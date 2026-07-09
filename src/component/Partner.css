@@ -101,6 +101,16 @@
     align-items:center;
 }
 
+.experience-buttons button{
+    transition: all 0.3s ease;
+}
+
+.experience-buttons button.active-level{
+    background:#2563eb;
+    color:#fff;
+    border-color:#2563eb;
+}
+
 .first-left-image img{
     width:100%;
     max-width:650px;
@@ -928,4 +938,34 @@
     padding:22px;
 }
 
+}
+
+.page-loader{
+height:80vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:20px;
+}
+
+.loader-spinner{
+width:60px;
+height:60px;
+border:5px solid #e5e7eb;
+border-top:5px solid #1451d8;
+border-radius:50%;
+animation:spin .8s linear infinite;
+}
+
+.page-loader h2{
+font-size:22px;
+font-weight:600;
+color:#1451d8;
+}
+
+@keyframes spin{
+to{
+transform:rotate(360deg);
+}
 }

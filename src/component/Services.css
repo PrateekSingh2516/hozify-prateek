@@ -611,6 +611,50 @@
     background: white;
     color: #08152f;
 }
+/* ===========================
+   PRICING HOVER EFFECTS
+=========================== */
+
+.plan-card{
+    transition: all 0.35s ease;
+    cursor: pointer;
+}
+
+.plan-card:hover{
+    transform: translateY(-12px);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+}
+
+.featured-card:hover{
+    transform: translateY(-18px);
+}
+
+.elite-card:hover{
+    transform: translateY(-18px);
+}
+
+.basic-btn,
+.pro-btn,
+.elite-btn{
+    transition: all .3s ease;
+}
+
+.basic-btn:hover{
+    background:#1155d4;
+    color:white;
+    transform:translateY(-3px);
+}
+
+.pro-btn:hover{
+    background:#0d47b8;
+    transform:translateY(-3px);
+}
+
+.elite-btn:hover{
+    background:#1155d4;
+    color:white;
+    transform:translateY(-3px);
+}
 
 /* ===========================
    TESTIMONIAL
