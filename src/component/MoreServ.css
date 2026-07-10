@@ -1,0 +1,703 @@
+body{
+    background:#f8f9fd;
+}
+
+.more-services{
+    background:#f8f9fd;
+}
+
+
+.more-hero{
+    text-align:center;
+    padding:90px 20px 70px;
+}
+
+.hero-subtitle{
+    color:#1452d9;
+    letter-spacing:4px;
+    font-size:15px;
+    margin-bottom:20px;
+}
+
+.more-hero h1{
+    font-size:clamp(38px,7vw,72px);
+    line-height:1.1;
+    font-weight:800;
+    color:#121826;
+}
+
+.more-hero h1 span{
+    color:#1452d9;
+}
+
+/* SEARCH */
+
+.search-boxx{
+
+    width:700px;
+    max-width:100%;
+
+    background:#fff;
+
+    display:flex;
+    align-items:center;
+
+    margin:55px auto 30px;
+
+    padding:10px;
+
+    border-radius:60px;
+
+    box-shadow:0 12px 40px rgba(0,0,0,.08);
+}
+
+.search-item{
+  
+    flex:1;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:0 22px;
+}
+
+.nvjfbvjvndsjvd{
+  color: #121826;
+}
+
+.search-item svg{
+    color:#1452d9;
+    font-size:18px;
+}
+
+.search-item input{
+
+    border:none;
+    outline:none;
+
+    width:100%;
+
+    background:transparent;
+    min-width: 0;
+    font-size:16px;
+}
+
+
+.divider{
+    width:1px;
+    height:38px;
+    background:#e5e7eb;
+}
+
+.cfcjhg{
+    height:58px;
+    width:170px;
+
+    margin-right:10px;
+
+    border:none;
+    border-radius:40px;
+
+    background:#1452d9;
+    color:#fff;
+
+    font-size:17px;
+    font-weight:600;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+
+    cursor:pointer;
+}
+
+.search-box button{
+    border:none;
+    background:#1452d9;
+    color:white;
+
+    padding:22px 38px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-size:17px;
+    cursor:pointer;
+}
+
+/* TRENDING */
+
+.trending{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    margin-top:25px;
+}
+
+.trending span{
+    color:#9ca3af;
+    font-size:13px;
+}
+
+.trending p{
+    background:#eef2ff;
+    padding:8px 18px;
+    border-radius:30px;
+    color:#6b7280;
+    font-size:13px;
+}
+
+/* CATEGORY BAR */
+
+.category-bar{
+
+    width:100%;
+    max-width:1400px;
+
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px 60px;
+
+    box-sizing:border-box;
+
+    background:white;
+
+    border-top:1px solid #ececec;
+}
+
+.categories{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.categories button{
+    border:none;
+    background:none;
+    color: #121826;
+    padding:12px 25px;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    border-radius:30px;
+}
+
+.categories .activee{
+    background:#1452d9;
+    color:white;
+}
+
+.filters{
+    display:flex;
+    gap:15px;
+}
+
+.filters button{
+
+    border:1px solid #d1d5db;
+
+    background:white;
+    color: black;
+    padding:10px 22px;
+
+    border-radius:10px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    cursor:pointer;
+
+    font-size:14px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.more-hero h1{
+    font-size:48px;
+}
+
+.category-bar{
+    flex-direction:column;
+    gap:25px;
+    padding:25px;
+}
+
+.categories{
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.search-boxx{
+    width:95%;
+    flex-direction:column;
+    border-radius:22px;
+    padding:18px;
+    gap:15px;
+}
+
+.divider{
+    display:none;
+}
+
+.search-item{
+    width:100%;
+    padding: 0;
+}
+
+.search-item input{
+    font-size:15px;
+}
+.cfcjhg{
+    width:100%;
+    margin:0;
+    height:55px;
+}
+
+
+.search-boxx button{
+    width:100%;
+    justify-content:center;
+}
+
+}
+
+
+/* ========================= */
+/* Recommended Services */
+/* ========================= */
+
+.zenith-section {
+  width: 90%;
+  max-width: 1200px;
+  margin: 80px auto;
+  padding-bottom: 70px;
+  background: #f8f9fd;
+}
+
+.zenith-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 45px;
+}
+
+.zenith-header h2{
+    font-size:56px;
+    font-weight:700;
+    color:#151b2d;
+    margin:0;
+}
+
+.zenith-header span{
+    color:#1452d9;
+}
+
+.zenith-header p {
+  color: #6b7280;
+  font-size: 15px;
+}
+
+/* ========================= */
+/* Grid */
+/* ========================= */
+
+.nova-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* ========================= */
+/* Card */
+/* ========================= */
+
+.orbit-card {
+  background: #fff;
+  border-radius: 22px;
+  overflow: hidden;
+  transition: 0.35s;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.orbit-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.12);
+}
+
+/* ========================= */
+/* Image */
+/* ========================= */
+
+.stellar-image {
+  position: relative;
+}
+
+.stellar-image img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+/* Badge */
+
+.galaxy-tag {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+
+  background: white;
+  color: #1452d9;
+
+  padding: 7px 15px;
+
+  border-radius: 30px;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Heart */
+
+.planet-heart {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.92);
+
+  color: #777;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 18px;
+
+  transition: .3s;
+}
+
+.planet-heart:hover {
+  color: crimson;
+}
+
+/* ========================= */
+/* Body */
+/* ========================= */
+
+.cosmos-body {
+  padding: 22px;display:flex;
+    flex-direction:column;
+    flex:1;
+}
+
+.meteor-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.meteor-head h3 {
+  font-size: 20px;
+  color: #121826;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Rating */
+
+.spark-rate {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  background: #ecfdf5;
+  color: #16a34a;
+
+  padding: 5px 10px;
+
+  border-radius: 20px;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.spark-rate svg {
+  font-size: 11px;
+}
+
+/* Description */
+
+.cosmos-body p {
+  color: #6b7280;
+  line-height: 1.7;
+  font-size: 15px;
+  margin: 18px 0 28px;
+}
+
+/* ========================= */
+/* Bottom */
+/* ========================= */
+
+.rocket-footer{
+    margin-top:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+}
+
+.rocket-footer small {
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+.rocket-footer h4 {
+  margin-top: 5px;
+  font-size: 36px;
+  color: #121826;
+}
+
+/* Button */
+
+.launch-btn {
+  border: none;
+  background: #1452d9;
+  color: white;
+
+  padding: 12px 28px;
+
+  border-radius: 12px;
+
+  font-weight: 600;
+  font-size: 15px;
+
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+.launch-btn:hover {
+  background: #0d46bc;
+}
+
+/* ========================= */
+/* View Button */
+/* ========================= */
+
+.view-service-btn {
+  margin: 60px auto 0;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 16px 42px;
+
+  border: 2px solid #1452d9;
+  background: white;
+
+  color: #1452d9;
+
+  border-radius: 40px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.view-service-btn:hover {
+  background: #1452d9;
+  color: white;
+}
+
+/* ========================= */
+/* Responsive */
+/* ========================= */
+
+@media (max-width: 1100px) {
+
+  .nova-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+}
+
+@media (max-width:768px) {
+
+  .zenith-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .zenith-header h2 {
+    font-size: 38px;
+  }
+
+  .nova-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rocket-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .launch-btn {
+    width: 100%;
+  }
+
+}
+
+/*==============================*/
+/* Service Excellence */
+/*==============================*/
+
+.prime-section{
+    background:#f6f7fd;
+    padding:90px 0;
+}
+
+.prime-heading{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.prime-heading h2{
+    font-size:52px;
+    line-height:1.2;
+    color:#111827;
+    font-weight:700;
+}
+
+.prime-heading span{
+    color:#1452d9;
+}
+
+.trending p{
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.trending p:hover{
+    color:#2456e8;
+    transform:translateY(-2px);
+}
+/* Cards */
+
+.prime-card-row{
+    width:90%;
+    max-width:1150px;
+    margin:auto;
+
+    display:flex;
+    justify-content:center;
+    gap:28px;
+}
+
+.prime-card{
+    flex:1;
+    background:#fff;
+
+    border-radius:22px;
+
+    padding:35px 28px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+
+    transition:.3s;
+}
+
+.prime-card:hover{
+    transform:translateY(-6px);
+}
+
+.prime-icon-box{
+
+    width:52px;
+    height:52px;
+
+    background:#edf3ff;
+
+    border-radius:14px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:#1452d9;
+
+    font-size:20px;
+
+    margin-bottom:28px;
+}
+
+.prime-card h3{
+
+    font-size:30px;
+
+    color:#111827;
+
+    margin-bottom:18px;
+
+    font-weight:700;
+}
+
+.prime-card p{
+
+    color:#6b7280;
+
+    font-size:16px;
+
+    line-height:1.8;
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.prime-card-row{
+
+flex-direction:column;
+
+}
+
+.prime-heading h2{
+
+font-size:42px;
+
+}
+
+}
+
+.fjbvfjvfn{
+  color: #111827;
+}
