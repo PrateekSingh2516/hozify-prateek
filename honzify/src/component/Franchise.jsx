@@ -31,7 +31,7 @@ useEffect(() => {
     try {
 
       const res = await axios.get(
-        "http://localhost:8000/api/franchise"
+        "https://hozify-backend.onrender.com/api/franchise"
       );
 
       setFranchise(res.data.franchise);
@@ -78,7 +78,7 @@ const handleSubmit = async (e) => {
   try {
 
     await axios.post(
-      "http://localhost:8000/api/franchise/apply",
+      "https://hozify-backend.onrender.com/api/franchise/apply",
       formData
     );
 

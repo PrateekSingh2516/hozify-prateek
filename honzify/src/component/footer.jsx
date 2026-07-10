@@ -14,7 +14,7 @@ function Footer(){
 
   try {
     const res = await axios.post(
-      "http://localhost:8000/api/blog/subscribe",
+      "https://hozify-backend.onrender.com/api/blog/subscribe",
       {
         email: footerEmail,
       }

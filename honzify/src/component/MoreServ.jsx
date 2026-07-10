@@ -75,7 +75,7 @@ function MoreServ() {
 
   const fetchServices = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/services");
+      const res = await axios.get("https://hozify-backend.onrender.com/api/services");
       if (res.data && res.data.services) {
         setServices(res.data.services);
       }

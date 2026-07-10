@@ -28,7 +28,7 @@ if (level === "Expert") {
 useEffect(() => {
   const fetchPartner = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/partner");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/partner`);
       setPartner(res.data.partner);
     } catch (err) {
       console.log(err);
@@ -73,10 +73,10 @@ const handleSubmit = async () => {
 
   try {
 
-    await axios.post(
-      "http://localhost:8000/api/partner/register",
-      formData
-    );
+   await axios.post(
+  `${import.meta.env.VITE_API_URL}/api/partner/register`,
+  formData
+);
 
     setMessage("Registration submitted successfully!");
 

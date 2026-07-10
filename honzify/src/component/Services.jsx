@@ -15,7 +15,7 @@ useEffect(() => {
         try{
 
             const res = await axios.get(
-                "http://localhost:8000/api/service-plans"
+                "https://hozify-backend.onrender.com/api/service-plans"
             );
 
             setPlans(res.data.plans);

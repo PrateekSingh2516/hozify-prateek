@@ -18,7 +18,7 @@ useEffect(() => {
 
 const fetchBlogs = async () => {
   try {
-    const res = await axios.get("http://localhost:8000/api/blog");
+    const res = await axios.get("https://hozify-backend.onrender.com/api/blog");
 
     setBlogs(res.data.blogs);
 
@@ -47,7 +47,7 @@ const handleSearch = async (keyword) => {
   try {
 
     const res = await axios.get(
-      `http://localhost:8000/api/blog/search?keyword=${keyword}`
+      `https://hozify-backend.onrender.com/api/blog/search?keyword=${keyword}`
     );
 
     setBlogs(res.data.blogs);
@@ -70,7 +70,7 @@ const handleNewsletter = async () => {
   try {
 
     const res = await axios.post(
-      "http://localhost:8000/api/blog/subscribe",
+      "https://hozify-backend.onrender.com/api/blog/subscribe",
       {
         email: newsletterEmail
       }
@@ -241,7 +241,7 @@ alt={featuredBlog?.title}
   setSelectedCategory("Maintenance");
 
   const res = await axios.get(
-    "http://localhost:8000/api/blog/category/Maintenance"
+    "https://hozify-backend.onrender.com/api/blog/category/Maintenance"
   );
 
   setBlogs(res.data.blogs);
@@ -258,7 +258,7 @@ alt={featuredBlog?.title}
   setSelectedCategory("Business");
 
   const res = await axios.get(
-    "http://localhost:8000/api/blog/category/Business"
+    "https://hozify-backend.onrender.com/api/blog/category/Business"
   );
 
   setBlogs(res.data.blogs);
@@ -275,7 +275,7 @@ alt={featuredBlog?.title}
   setSelectedCategory("Lifestyle");
 
   const res = await axios.get(
-    "http://localhost:8000/api/blog/category/Lifestyle"
+    "https://hozify-backend.onrender.com/api/blog/category/Lifestyle"
   );
 
   setBlogs(res.data.blogs);
@@ -292,7 +292,7 @@ alt={featuredBlog?.title}
   setSelectedCategory("Technology");
 
   const res = await axios.get(
-    "http://localhost:8000/api/blog/category/Technology"
+    "https://hozify-backend.onrender.com/api/blog/category/Technology"
   );
 
   setBlogs(res.data.blogs);

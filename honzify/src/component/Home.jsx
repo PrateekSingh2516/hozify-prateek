@@ -87,7 +87,7 @@ const [showIntro, setShowIntro] = useState(true);
   const fetchServices = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:8000/api/home-services"
+        "https://hozify-backend.onrender.com/api/home-services"
       );
 
       setServices(res.data.services);

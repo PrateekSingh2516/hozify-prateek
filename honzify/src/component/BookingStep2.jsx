@@ -65,7 +65,7 @@ const completeBooking = async () => {
   try {
 
     const res = await axios.post(
-      "http://localhost:8000/api/bookings",
+      "https://hozify-backend.onrender.com/api/bookings",
       {
         service: bookingData.service,
         category: bookingData.category,
